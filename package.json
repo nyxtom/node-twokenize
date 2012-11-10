@@ -2,7 +2,7 @@
   "name": "twokenize",
   "description": "Nodejs port and update of Jason Baldrige's Twokenize with layers for common twitter patterns",
   "keywords": ["twitter","tokenizer"],
-  "version": "0.1",
+  "version": "0.1.0",
   "licenses": [{
     "type": "APACHE",
     "url": "http://www.apache.org/licenses/"
@@ -13,6 +13,6 @@
   },
   "engines": {
     "node": ">=0"
-  }
+  },
   "main": "./twokenize.js"
 }
