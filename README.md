@@ -21,13 +21,6 @@ INSTALL
     npm install twokenize
 
 
-LICENSE
---------
-apache license 2.0: 
-http://www.apache.org/licenses/LICENSE-2.0.html
-Copyright Brendan O'Connor, Michel Krieger, and David Ahn, 2009-2010.
-
-
 USAGE
 -----
 
