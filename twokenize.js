@@ -94,7 +94,9 @@ var protectedExp = new RegExp("(" + expressions.join("|") + ")/g");
 // The main work of tokenizing a tweet
 function simpleTokenize(text) {
     //separate hashtags: useful for instagram-like texts
-    var text = separateHashtags(text);
+    text = separateHashtags(text);
+    //remove html tags
+    text = removeHtmlTags(text);
 
     // Do the no-brainers first
     var splitPunctText = splitEdgePunct(text);
@@ -152,7 +154,11 @@ function simpleTokenize(text) {
     return res.filter(function (str) { return str.length > 0 });
 };
 
-function separateHashtags (text) {
+function removeHtmlTags(text) {
+     return text.replace(/<\/?[^>]+(>|$)/g, "");
+}
+
+function separateHashtags(text) {
     return text.replace(/#/ig, " #");
 }
 
