@@ -22,7 +22,7 @@ var entity = "&(amp|lt|gt|quot);";
 // Nov 2012 Edit: Going with the daringfireball.net/2010/07/improved_regex_for_matching_urls
 //  - copying from Gruber's URL matching regex ala http://gist.github.com/1033143
 var urlStart1  = "(https?://|www\\.)";
-var commonTLDs = "(com|co\\.uk|org|net|info|ca|ly|mp|edu|gov|io|vi|ry)";
+var commonTLDs = "(com|co\\.uk|org|net|info|ca|ly|mp|edu|gov|io|vi|ry|it)";
 var urlStart2  = "[A-Za-z0-9\\.-]+?\\." + commonTLDs + "(?=[/ \\W])";
 var urlBody    = "[^ \\t\\r\\n<>]*?";
 var urlExtraCrapBeforeEnd = "("+punctChars+"|"+entity+")+?";
