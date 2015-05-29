@@ -155,7 +155,8 @@ function simpleTokenize(text) {
 };
 
 function removeHtmlTags(text) {
-     return text.replace(/<\/?[^>]+(>|$)/g, "");
+    text = text.replace(/\//g, "\\");
+    return text.replace(/<\/?[^>]+(>|$)/g, "");
 }
 
 function separateHashtags(text) {
