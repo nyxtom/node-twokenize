@@ -22,7 +22,7 @@ var entity = "&(amp|lt|gt|quot);";
 // Nov 2012 Edit: Going with the daringfireball.net/2010/07/improved_regex_for_matching_urls
 //  - copying from Gruber's URL matching regex ala http://gist.github.com/1033143
 var urlStart1  = "(https?://|www\\.)";
-var commonTLDs = "(com|co\\.uk|org|net|info|ca|ly|mp|edu|gov|io|vi|ry)";
+var commonTLDs = "(com|co\\.uk|org|net|info|ca|ly|mp|edu|gov|io|vi|ry|it)";
 var urlStart2  = "[A-Za-z0-9\\.-]+?\\." + commonTLDs + "(?=[/ \\W])";
 var urlBody    = "[^ \\t\\r\\n<>]*?";
 var urlExtraCrapBeforeEnd = "("+punctChars+"|"+entity+")+?";
@@ -93,6 +93,10 @@ var protectedExp = new RegExp("(" + expressions.join("|") + ")/g");
 
 // The main work of tokenizing a tweet
 function simpleTokenize(text) {
+    //separate hashtags: useful for instagram-like texts
+    text = separateHashtags(text);
+    //remove html tags
+    text = removeHtmlTags(text);
 
     // Do the no-brainers first
     var splitPunctText = splitEdgePunct(text);
@@ -149,6 +153,15 @@ function simpleTokenize(text) {
 
     return res.filter(function (str) { return str.length > 0 });
 };
+
+function removeHtmlTags(text) {
+    text = text.replace(/\//g, "\\");
+    return text.replace(/<\/?[^>]+(>|$)/g, "");
+}
+
+function separateHashtags(text) {
+    return text.replace(/#/ig, " #");
+}
 
 function splitEdgePunct(text) {
     var splitLeft = text.replace(edgePunctLeft, "$1$2 $3");
